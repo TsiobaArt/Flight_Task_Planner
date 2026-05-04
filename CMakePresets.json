@@ -1,0 +1,48 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 16,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "qt-mingw-debug",
+      "displayName": "Qt 6.10.2 MinGW Debug",
+      "generator": "MinGW Makefiles",
+      "binaryDir": "${sourceDir}/build/vscode-debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_PREFIX_PATH": "C:/Qt/6.10.2/mingw_64",
+        "CMAKE_C_COMPILER": "C:/Qt/Tools/mingw1310_64/bin/gcc.exe",
+        "CMAKE_CXX_COMPILER": "C:/Qt/Tools/mingw1310_64/bin/g++.exe",
+        "QT_ENABLE_QML_DEBUG": "ON"
+      },
+      "environment": {
+        "PATH": "C:/Qt/Tools/mingw1310_64/bin;C:/Qt/6.10.2/mingw_64/bin;$penv{PATH}"
+      }
+    },
+    {
+      "name": "qt-mingw-release",
+      "displayName": "Qt 6.10.2 MinGW Release",
+      "inherits": "qt-mingw-debug",
+      "binaryDir": "${sourceDir}/build/vscode-release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "QT_ENABLE_QML_DEBUG": "OFF"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "qt-mingw-debug",
+      "displayName": "Build Qt Debug",
+      "configurePreset": "qt-mingw-debug"
+    },
+    {
+      "name": "qt-mingw-release",
+      "displayName": "Build Qt Release",
+      "configurePreset": "qt-mingw-release"
+    }
+  ]
+}
