@@ -17,6 +17,7 @@ qt_add_qml_module(appFlight_Task_Planner
     URI Flight_Task_Planner
     QML_FILES
         ui/Main.qml
+        SOURCES src/struct/FlightTask.h
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
