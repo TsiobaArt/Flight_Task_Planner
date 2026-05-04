@@ -10,13 +10,13 @@ find_package(Qt6 REQUIRED COMPONENTS Quick)
 qt_standard_project_setup(REQUIRES 6.5)
 
 qt_add_executable(appFlight_Task_Planner
-    main.cpp
+    src/main.cpp
 )
 
 qt_add_qml_module(appFlight_Task_Planner
     URI Flight_Task_Planner
     QML_FILES
-        Main.qml
+        ui/Main.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
