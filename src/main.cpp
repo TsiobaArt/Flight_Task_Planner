@@ -3,6 +3,14 @@
 
 int main(int argc, char *argv[])
 {
+
+    QCoreApplication::setApplicationName("FTP");
+    QCoreApplication::setApplicationVersion(QStringLiteral(APP_VERSION) + "." + QStringLiteral(GIT_COMMIT_HASH));
+    QGuiApplication::setApplicationDisplayName(
+        QCoreApplication::applicationName() + " v" + QCoreApplication::applicationVersion()
+        );
+
+
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;

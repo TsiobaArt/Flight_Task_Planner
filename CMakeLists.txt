@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(Flight_Task_Planner VERSION 0.1 LANGUAGES CXX)
+project(Flight_Task_Planner VERSION 1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(QT_QML_GENERATE_QMLLS_INI ON)
@@ -39,3 +39,23 @@ install(TARGETS appFlight_Task_Planner
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
+
+
+# Version prog-git hash
+execute_process(
+    COMMAND git rev-parse --short HEAD
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    OUTPUT_VARIABLE GIT_COMMIT_HASH
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+if(NOT GIT_COMMIT_HASH)
+    set(GIT_COMMIT_HASH "unknown")
+endif()
+
+target_compile_definitions(appFlight_Task_Planner
+    PRIVATE
+        APP_VERSION="${PROJECT_VERSION}"
+        GIT_COMMIT_HASH="${GIT_COMMIT_HASH}"
+)
+
